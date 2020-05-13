@@ -1,1 +1,5 @@
-# Flask_Corona_App_Write_Asyn
+# Flask RESTful App sends PUT requests to Rabbit MQ Queue 
+
+PUT Methods available
+
+
