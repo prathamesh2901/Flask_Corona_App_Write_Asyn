@@ -15,6 +15,7 @@ class Country(Resource):
         data = Country.parser.parse_args()
         country = CountryModel(name, **data)
 
+
         country.cases = data['cases']
         country.deaths = data['deaths']
         country.deaths = data['deaths']
