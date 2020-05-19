@@ -1,5 +1,7 @@
 from flask_restful import Resource, reqparse
 from models.state import StateModel
+from datetime import date
+
 
 class State(Resource):
 
@@ -13,12 +15,8 @@ class State(Resource):
     def put(self, name, country):
 
         data = State.parser.parse_args()
-        state = StateModel(name, **data)
-
-
-        state.cases = data['cases']
-        state.deaths = data['deaths']
-        state.deaths = data['deaths']
+        today = str(date.today())
+        state = StateModel(name, today, **data)
 
         state.send_to_queue()
 

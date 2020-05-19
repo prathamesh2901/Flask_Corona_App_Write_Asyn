@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
-from flask_jwt import jwt_required
 from models.country import CountryModel
+from datetime import date
 
 
 class Country(Resource):
@@ -13,12 +13,8 @@ class Country(Resource):
     def put(self, name):
 
         data = Country.parser.parse_args()
-        country = CountryModel(name, **data)
-
-
-        country.cases = data['cases']
-        country.deaths = data['deaths']
-        country.deaths = data['deaths']
+        today = str(date.today())
+        country = CountryModel(name, today, **data)
 
         country.send_to_queue()
 
